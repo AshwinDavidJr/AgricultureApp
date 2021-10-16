@@ -51,9 +51,9 @@ public class AdminController {
 
 	
 	  @PostMapping("/addCrop/{farmerId}") 
-	  public CropModel addCrop(@PathVariable String farmerId,@RequestBody CropModel Crop) {
-	  CropModel Tcrop= restTemplate.postForObject("http://CropMicroservice/crop/addCrop/"+farmerId,Crop,CropModel.class); 
-	  return Tcrop;
+	  public String addCrop(@PathVariable String farmerId,@RequestBody CropModel Crop) {
+	  String msg = restTemplate.postForObject("http://CropMicroservice/crop/addCrop/"+farmerId,Crop,String.class); 
+	  return msg;
 	  }
 	
 	
