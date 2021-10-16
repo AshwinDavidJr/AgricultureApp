@@ -1,0 +1,18 @@
+#spring.data.mongodb.uri=mongodb+srv://utronics:test@utronics.i4evz.mongodb.net/CropDealApplication?retryWrites=true&w=majority
+#spring.application.name=Farmer-App
+#server.port=8081
+#eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+
+server:
+  port: 8082
+spring:
+  application:
+    name: Farmer-App
+  data:
+    mongodb:
+      uri: mongodb+srv://AshwinDavid:xxxxxxx@cluster0-training.1p0c1.mongodb.net/FarmerDB?retryWrites=true&w=majority
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
