@@ -33,13 +33,13 @@ public class FarmController {
 //	private FarmUserRepository farmUserRepo;
 	
 	//just created for simply adding only username and password
-	@RequestMapping("/create")
+	@PostMapping("/create")
 	public String create(@RequestParam String farmerUsername, @RequestParam String farmerPassword) {
 		FarmUser u = farmUserRepo.save(new FarmUser(farmerUsername,farmerPassword));
 		return u.toString();
 	}
 	
-	@RequestMapping("/getall")
+	@GetMapping("/getall")
 	public List<FarmUser> getAll(){
 		return farmUserRepo.findAll();
 	}
@@ -61,7 +61,7 @@ public class FarmController {
 		return farmUserService.deletefarmer(id);
 	}
 	
-	@RequestMapping("/get/{farmerUsername}")
+	@GetMapping("/get/{farmerUsername}")
 	public FarmUser getUsers(@PathVariable String farmerUsername) {
 		return farmUserService.getByUsername(farmerUsername);
 	}
@@ -76,7 +76,7 @@ public class FarmController {
 	
 	//FArMER functionalities on his CROP
 	//------------------------------------------------------------------------
-	@RequestMapping("/getAllCrops/{farmerId}")
+	@GetMapping("/getAllCrops/{farmerId}")
 	public List<CropModel> getAllCropsByFarmer(@PathVariable String farmerId) {
 		return Arrays.asList(restTemplate.getForObject("http://CropMicroservice/crop/getall"+farmerId, CropModel[].class));
 

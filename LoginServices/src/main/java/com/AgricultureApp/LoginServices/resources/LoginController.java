@@ -17,11 +17,8 @@ public class LoginController {
 
 	
 	@GetMapping("/")
-	public boolean test(Principal principal) {
-		if(principal!=null)
-			return true;
-		else
-			return false;
+	public Principal test(Principal principal) {
+		return principal;
 	}
 	
 	@RequestMapping("/login")

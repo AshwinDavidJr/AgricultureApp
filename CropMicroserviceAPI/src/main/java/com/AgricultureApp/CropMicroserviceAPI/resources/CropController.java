@@ -27,7 +27,7 @@ public class CropController {
 	@Autowired
 	CropRepository cropRepository;
 	
-	@RequestMapping("")
+	@GetMapping("")
 	public String Test() {
 		return "hellowoworld";
 	}
@@ -41,7 +41,7 @@ public class CropController {
 		
 	}
 	
-	@RequestMapping("/getall")
+	@GetMapping("/getall")
 	public List<CropModel> getAllCrops(){
 		
 		return cropServices.getAllCrop();

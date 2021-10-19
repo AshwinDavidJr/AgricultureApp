@@ -24,7 +24,7 @@ public class AdminController {
 	@Autowired
 	RestTemplate restTemplate;
 
-	@RequestMapping("")
+	@GetMapping("")
 	public String Test() {
 		return "HelloWorld";
 	}
@@ -32,19 +32,19 @@ public class AdminController {
 	
 	//Everything that An ADMIN can do related to CROP
 	//---------------------------------------------------------------------
-	@RequestMapping("/getAllCrops")
+	@GetMapping("/getAllCrops")
 	public List<CropModel> getAllCrops() {
 		return Arrays.asList(restTemplate.getForObject("http://CropMicroservice/crop/getall", CropModel[].class));
 
 	}
 
-	@RequestMapping("/getAllCropsByFarmer/{farmerId}")
+	@GetMapping("/getAllCropsByFarmer/{farmerId}")
 	public List<CropModel> getAllCropsByFarmer(@PathVariable String farmerId) {
 		return Arrays.asList(restTemplate.getForObject("http://CropMicroservice/crop/getall"+farmerId, CropModel[].class));
 
 	}
 	
-	@RequestMapping("/deleteCrop/{cropId}")
+	@DeleteMapping("/deleteCrop/{cropId}")
 	public Boolean deleteCropById(@PathVariable String cropId) {
 		restTemplate.delete("http://CropMicroservice/crop/delete/" + cropId);
 		return true;
@@ -66,6 +66,7 @@ public class AdminController {
 	
 	//Everything ADMIN can do related to FARMER
 	//-------------------------------------------------------
+	
 	@GetMapping("/getAllFarmers")
 	public List<FarmerModel> getAllFarmers() {
 		return Arrays.asList(restTemplate.getForObject("http://Farmer-App/getall", FarmerModel[].class));

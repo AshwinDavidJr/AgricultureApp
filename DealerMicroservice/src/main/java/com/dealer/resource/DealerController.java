@@ -29,7 +29,7 @@ public class DealerController {
 	@Autowired
 	DealerService dealerService = new DealerService();
 	
-	@RequestMapping("/getall")
+	@GetMapping("/getall")
 	public List<Dealer> getAll(){
 		return dealerService.getAll();
 	}
@@ -65,7 +65,7 @@ public class DealerController {
 	
 	// --------------------------------farmer rest api calls---------------------------
 	
-	@RequestMapping("/call")
+	@GetMapping("/call")
 	public String call() {
 		
 		return restTemplate.getForObject("http://farmer-app/getall", String.class).toString();
@@ -73,12 +73,12 @@ public class DealerController {
 //		return "hi iam hard coded";
 	}
 	
-	@RequestMapping("/farmer/{farmerUsername}")
+	@GetMapping("/farmer/{farmerUsername}")
 	public String getFarmer(@PathVariable String farmerUsername) {
 		return restTemplate.getForObject("http://FARMER-APP/get/"+farmerUsername, String.class).toString();
 	}
 	
-	@RequestMapping("/farmerid/{id}")
+	@GetMapping("/farmerid/{id}")
 	public String getFarmerById(@PathVariable String id) {
 		return restTemplate.getForObject("http://FARMER-APP//findfarmer/"+id, String.class).toString();
 	}
@@ -88,7 +88,7 @@ public class DealerController {
 	
 	///---------------------------------------crop calls---------------------------------
 	
-		@RequestMapping("/getAllCrops")
+		@GetMapping("/getAllCrops")
 		public List<CropModel> getAllCrops(){
 			
 			
@@ -97,7 +97,7 @@ public class DealerController {
 			
 		}
 		
-		@RequestMapping("/getAllCrops/{farmerId}")
+		@GetMapping("/getAllCrops/{farmerId}")
 		public List<CropModel> getAllCropsByFarmerId(@PathVariable String farmerId){
 			
 			

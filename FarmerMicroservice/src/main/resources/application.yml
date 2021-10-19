@@ -10,7 +10,7 @@ spring:
     name: Farmer-App
   data:
     mongodb:
-      uri: mongodb+srv://AshwinDavid:xxxxxxx@cluster0-training.1p0c1.mongodb.net/FarmerDB?retryWrites=true&w=majority
+      uri: mongodb+srv://AshwinDavid:19_valsalakumari_62@cluster0-training.1p0c1.mongodb.net/FarmerDB?retryWrites=true&w=majority
     
 eureka:
   client:

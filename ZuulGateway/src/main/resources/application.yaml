@@ -1,0 +1,19 @@
+server:
+   port: 8100
+      
+spring:
+  application:
+    name: ZuulGateway
+    
+zuul:
+   routes:
+      DEALER-APP:
+         serviceId: DEALER-APP
+      FARMER-APP:
+         serviceId: FARMER-APP
+      ADMINMICROSERVICE:
+         serviceId: ADMINMICROSERVICE
+#      login-service:
+#         url: http://localhost:9004
+      CROPMICROSERVICE:
+         serviceId: CROPMICROSERVICE

@@ -28,6 +28,9 @@ public class CropModel {
 		this.cropQty = cropQty;
 		this.cropType = cropType;
 	}
+	public CropModel() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getCropId() {
 		return cropId;
 	}
