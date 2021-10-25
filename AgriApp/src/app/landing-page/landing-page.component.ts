@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
+  flag:Boolean = true;
+  @Output() newItemEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeParentUser(){
+    this.newItemEvent.emit();
   }
 
 }

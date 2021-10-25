@@ -54,7 +54,7 @@
                 <div class="col-md-2 text-end">
                     <a href="#" class="profile"> <img class="profileImg" src="https://img.icons8.com/material/24/000000/user-male-circle--v1.png" /> </a>
                     <a class="nav-extra" href="#" data-toggle="modal" data-target="#LoginModal">LOGIN</a>
-                    <a class="nav-extra" href="#">Signup</a>
+                    <a class="nav-extra" href="#" data-toggle="modal" data-target="#SignupModal">Signup</a>
                 </div>
 
 
@@ -132,6 +132,72 @@
                                                     </div>
                                                 </form>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SignupModel -->
+        <div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <section class="myform-area">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-16">
+                                        <div class="form-area login-form">
+                                            <div class="form-content">
+                                                <h2>SignUp</h2>
+                                                <p>Please Provide the required information to SignUp.</p>
+                                                <a class="btn btn-outline-dark" href="/users/googleauth" role="button" style="text-transform:none">
+                                                    <img width="20px" style="margin-bottom:3px; margin-right:5px; font-size: smaller;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />Google
+                                                    Sign-up
+                                                </a>
+                                            </div>
+                                            <div class="form-input">
+
+                                                <form>
+                                                    <div class="form-group">
+                                                        <input type="text" id="" name="name" required>
+                                                        <label>User Name</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" id="" name="name" required>
+                                                        <label>Email</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" id="" name="password" required>
+                                                        <label>password</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" id="" name="Cpassword" required>
+                                                        <label> Confirm password</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="role">Choose a role:</label> <br> <br>
+                                                        <select name="role" id="roles">
+                                                        <option value="farmer">Farmer</option>
+                                                        <option value="dealer">Dealer</option>
+                                                    </select>
+                                                    </div>
+
+
+
+                                                    <div class="myform-button">
+                                                        <button class="myform-btn">SignUp</button>
+                                                        <button type="button" class="myform-btn" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -180,9 +246,11 @@
           </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
 </section>
 
 <!-- end about section -->
@@ -192,4 +260,13 @@
 <!-- MainBody Ends -->
 
 <!-- Footer -->
+<a class="myform-btn" (click)=changeParentUser() routerLink="admin">Im Not An Admin</a>
+
+
+
 <!-- Footer ends -->
+
+
+<!-- <router-outlet></router-outlet> -->
+
+<!-- <app-admin></app-admin> -->
