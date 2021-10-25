@@ -6,33 +6,39 @@
         <mat-tab label="FARMER">
 
 
-            <button (click)=viewFarmers()> Show All Farmmers</button>
+            <!-- <button (click)=viewFarmers()> Show All Farmmers</button> -->
+
+            <div *ngIf="FarmersList!=null">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let farmer of FarmersList">
+                            <td>farmer.id</td>
+                            <td>farmer.name</td>
+                            <td>farmer.email</td>
+                            <td>farmer.location</td>
+                            <td>farmer.mobile</td>
+                            <td>
+                                <button (click)=viewFarmers()> Edit</button>
+                                <button (click)=viewFarmers()> Update</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
         </mat-tab>
         <mat-tab label="DEALER">Dealer</mat-tab>
         <mat-tab label="CROP">CROP</mat-tab>
     </mat-tab-group>
-    <!-- <mat-grid-list cols="2" rowHeight="350px">
-        <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-            <mat-card class="dashboard-card">
-                <mat-card-header>
-                    <mat-card-title>
-                        {{card.title}}
-                        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-                        <mat-menu #menu="matMenu" xPosition="before">
-                            <button mat-menu-item>Expand</button>
-                            <button mat-menu-item>Remove</button>
-                        </mat-menu>
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="dashboard-card-content">
-                    <div>
-                        <button (click)=viewFarmers()>View farmers</button>
-
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list> -->
 </div>
