@@ -1,14 +1,35 @@
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="adduserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="grid-container">
     <h1 class="mat-h1">Dashboard</h1>
-
     <mat-tab-group>
 
         <mat-tab label="FARMER">
 
 
-            <!-- <button (click)=viewFarmers()> Show All Farmmers</button> -->
+            
 
-            <div *ngIf="FarmersList!=null">
+            <div class="container" *ngIf="FarmerList!=null">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adduserModal"> Add Farmer</button>
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -17,16 +38,104 @@
                             <th scope="col">Email</th>
                             <th scope="col">Location</th>
                             <th scope="col">Mobile</th>
+                            <th scope="col">Account No</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let farmer of FarmersList">
-                            <td>farmer.id</td>
-                            <td>farmer.name</td>
-                            <td>farmer.email</td>
-                            <td>farmer.location</td>
-                            <td>farmer.mobile</td>
+                        <tr *ngFor="let farmer of FarmerList">
+                            <td>{{farmer.userId}}</td>
+                            <td>{{farmer.userName}}</td>
+                            <td>{{farmer.userEmail}}</td>
+                            <td>{{farmer.location}}</td>
+                            <td>{{farmer.mobileNo}}</td>
+                            <td>{{farmer.accountNo}}</td>
+                            <td>
+                                <button class="btn btn-primary" (click)=viewFarmers()> Edit</button>
+                                <button class="btn btn-danger" (click)=viewFarmers()> Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+               
+                
+            </div>
+            
+
+            
+        </mat-tab>
+
+
+
+
+
+
+
+
+        <mat-tab label="DEALER">
+            <div class="container" *ngIf="DealerList!=null">
+                <button class="btn btn-warning" (click)=viewFarmers()> Add Dealer</button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Account No</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dealer of DealerList">
+                            <td>{{dealer.userId}}</td>
+                            <td>{{dealer.userName}}</td>
+                            <td>{{dealer.userEmail}}</td>
+                            <td>{{dealer.location}}</td>
+                            <td>{{dealer.mobileNo}}</td>
+                            <td>{{dealer.accountNo}}</td>
+                            <td>
+                                <button class="btn btn-primary" (click)=viewFarmers()> Edit</button>
+                                <button class="btn btn-danger" (click)=viewFarmers()> Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+
+
+
+
+        </mat-tab>
+        <mat-tab label="CROP">
+            
+            <!-- <div class="container" *ngIf="CropList!=null">
+                <button class="btn btn-warning" (click)=viewFarmers()> Add Crop</button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Account No</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let crop of CropList">
+                            <td>{{crop.userId}}</td>
+                            <td>{{crop.userName}}</td>
+                            <td>{{crop.userEmail}}</td>
+                            <td>{{crop.location}</td>
+                            <td>{{crop.mobileNo}</td>
+                            <td>{{crop.accountNo}</td>
                             <td>
                                 <button (click)=viewFarmers()> Edit</button>
                                 <button (click)=viewFarmers()> Update</button>
@@ -37,8 +146,7 @@
 
 
             </div>
+             -->
         </mat-tab>
-        <mat-tab label="DEALER">Dealer</mat-tab>
-        <mat-tab label="CROP">CROP</mat-tab>
     </mat-tab-group>
 </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { farmer } from '../farmer';
+import { AdminServicesService } from '../admin-services.service';
+import { userModel } from '../userModel';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,11 +11,17 @@ import { farmer } from '../farmer';
 })
 export class AdminDashboardComponent implements OnInit{
   
-  FarmersList:farmer[]=[];
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  FarmerList:userModel[]=[];
+  DealerList:userModel[]=[];
+  //CropList:userModel[]=[];
+  constructor(private breakpointObserver: BreakpointObserver, private adminService:AdminServicesService) {}
 
 
   ngOnInit(): void {
+    this.adminService.getALLFarmers().subscribe(res=>{this.FarmerList=res});
+    this.adminService.getALLDealers().subscribe(res=>{this.DealerList=res});
+    //this.adminService.getALLFarmers().subscribe(res=>{this.FarmerList=res});
+    
     
   }
 
