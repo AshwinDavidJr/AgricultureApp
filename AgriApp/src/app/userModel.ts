@@ -1,23 +1,16 @@
 export class userModel{
 
-    constructor(
-        public userId:String,
-        public userName:String,
-        public userEmail:String,
-        public password:String
-        ,public location:String
-        ,public accountNo:String,
-        public mobileNo:String,
-        public userType:String)
+        userId:String = "U"+Math.random() * (900 - 100 + 1) + 100;
+         userName:String = "";
+         userEmail:String = "";
+         password:String = "";
+        location:String = "";
+         accountNo:String = "";
+         mobileNo:String = "";
+        userType:String = "";
+    constructor()
         
         {
-        this.userId=userId;
-        this.userName=userName;
-        this.userEmail=userEmail;
-        this.password=password;
-        this.location=location;
-        this.accountNo=accountNo;
-        this.mobileNo=mobileNo;
-        this.userType=userType;
+        
     }
 }

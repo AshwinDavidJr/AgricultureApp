@@ -20,6 +20,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminServicesService } from './admin-services.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatMenuModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatFormFieldModule,
+    FormsModule,
+    DataTablesModule,
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   providers: [AdminServicesService],
   bootstrap: [AppComponent]
