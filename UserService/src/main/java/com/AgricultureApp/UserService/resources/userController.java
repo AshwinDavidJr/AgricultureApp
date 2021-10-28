@@ -25,6 +25,14 @@ public class userController {
 	private UserRepository userRepository;
 	
 	
+	@GetMapping("/Authenticate/{userName}")
+	public UserModel authenticate(@PathVariable String userName) {
+		
+		return userRepository.findByuserName(userName);
+		
+	}
+	
+	
 	@GetMapping("/getall")
 	public List<UserModel> getAll(){
 		return userRepository.findAll();

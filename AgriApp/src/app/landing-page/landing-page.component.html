@@ -118,17 +118,17 @@
                                             </div>
                                             <div class="form-input">
 
-                                                <form>
+                                                <form [formGroup]="loginForm" (ngSubmit)="Authenticate()">
                                                     <div class="form-group">
-                                                        <input type="text" id="" name="name" required>
+                                                        <input type="text" formControlName="userName" id="" name="name" required>
                                                         <label>User Name</label>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="password" id="" name="password" required>
+                                                        <input type="password" formControlName="password" id="" name="password" required>
                                                         <label>password</label>
                                                     </div>
                                                     <div class="myform-button">
-                                                        <button class="myform-btn">Login</button>
+                                                        <button class="myform-btn" type="submit">Login</button>
                                                         <button type="button" class="myform-btn" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </form>
@@ -261,7 +261,7 @@
 <!-- MainBody Ends -->
 
 <!-- Footer -->
-<a class="myform-btn" (click)=changeParentUser() routerLink="admin">Im Not An Admin</a>
+<a class="myform-btn" (click)=changeParentUser() routerLink="../admin">Im Not An Admin</a>
 
 
 

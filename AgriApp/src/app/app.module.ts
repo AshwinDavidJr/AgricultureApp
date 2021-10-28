@@ -18,13 +18,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { AdminServicesService } from './admin-services.service';
+import { AdminServicesService } from './Services/admin-services.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DealerComponent } from './dealer/dealer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AdminComponent,
     NavigationBarComponent,
     AdminDashboardComponent,
+    DealerComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsModule,
     DataTablesModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    
   ],
   providers: [AdminServicesService],
   bootstrap: [AppComponent]

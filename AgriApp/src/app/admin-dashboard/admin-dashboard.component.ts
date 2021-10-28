@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { AdminServicesService } from '../admin-services.service';
-import { userModel } from '../userModel';
+import { AdminServicesService } from '../Services/admin-services.service';
+import { userModel } from '../models/userModel';
 import { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
-import { cropModel } from '../cropModel';
+import { cropModel } from '../models/cropModel';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
@@ -27,11 +27,12 @@ export class AdminDashboardComponent implements OnInit{
   dataSource:any;
 
   formValue!:FormGroup;
-
+  formValueCrop!:FormGroup;
+  cropObj : cropModel = new cropModel("","","",0,"","");
 
   FarmerList:userModel[]=[];
   DealerList:userModel[]=[];
-  userObj : userModel = new userModel();
+  userObj : userModel = new userModel("","","","","","","");
   CropList:cropModel[]=[];
   result:any;
   
@@ -46,6 +47,7 @@ export class AdminDashboardComponent implements OnInit{
     //   processing: true,
     //   lengthMenu:[[5,10,20,25,50,-1],[5,10,20,25,50,"All"]]
     // };
+    
     this.adminService.getALLFarmers().subscribe(res=>{this.FarmerList=res});
     this.adminService.getALLDealers().subscribe(res=>{this.DealerList=res});
     this.adminService.getALLCrops().subscribe(res=>{this.CropList=res});
@@ -64,11 +66,22 @@ export class AdminDashboardComponent implements OnInit{
         userName:[""],
         userEmail:[""],
         userId:[""],
-        password:[""],
         location:[""],
         accountNo:[""],
         mobileNo:[""],
-        userType:[""]
+        userType:[""],
+        password:[""]
+      }
+    )
+
+    this.formValueCrop=this.fb.group(
+      {
+        farmerId:[""],
+        cropId:[""],
+        cropName:[""],
+        cropQty:[""],
+        cropType:[""],
+        cropPrice:[""],
       }
     )
     
@@ -95,7 +108,7 @@ export class AdminDashboardComponent implements OnInit{
     else
     alert("wrong UserType");
     
-    
+    this.formValue.reset();
     this.ngOnInit();
   }
 
@@ -106,7 +119,8 @@ export class AdminDashboardComponent implements OnInit{
     this.formValue.controls['userEmail'].setValue(data.userEmail);
     this.formValue.controls['location'].setValue(data.location);
     this.formValue.controls['mobileNo'].setValue(data.mobileNo);
-    this.formValue.controls['userType'].setValue("Farmer");
+    this.formValue.controls['userType'].setValue(data.userType);
+    this.formValue.controls['password'].setValue(data.password);
     
   }
   updateUser(){
@@ -115,19 +129,76 @@ export class AdminDashboardComponent implements OnInit{
     this.userObj.mobileNo=this.formValue.value.mobileNo;
     this.userObj.userType=this.formValue.value.userType;
     this.userObj.userEmail=this.formValue.value.userEmail;
+    this.userObj.password=this.formValue.value.password;
     this.adminService.updateUser(this.userObj,this.userObj.userId).subscribe(res=>{
       console.log("updated user successfully")
     });
+    
     this.ngOnInit();
+    this.formValue.reset();
+    
+    
   }
 
   deleteFarmer(userId:String){
     
-    console.log("in delete method")
+    // console.log("in delete method")
     this.adminService.DeleteFarmer(userId).subscribe(res=>{this.result=res});
-   console.log("deleted User")
+  //  console.log("deleted User")
     this.ngOnInit();
     
+    
+  }
+
+
+  // ------------------------------------------------------
+  addCrop(){
+    console.log("in add crop method");
+    this.cropObj.cropId=this.formValueCrop.value.cropId;
+    this.cropObj.cropName=this.formValueCrop.value.cropName;
+    this.cropObj.cropPrice=this.formValueCrop.value.cropPrice;
+    this.cropObj.cropQty=this.formValueCrop.value.cropQty;
+    this.cropObj.farmerId=this.formValueCrop.value.farmerId;
+    this.cropObj.cropType=this.formValueCrop.value.cropType;
+    if(this.cropObj!=null){
+      this.adminService.Addcrop(this.cropObj).subscribe(res=>{this.CropList.push(res)});
+    }
+
+    this.ngOnInit();
+    
+  }
+
+  editCrop(data:any){
+    console.log(data);
+    
+    this.cropObj.farmerId=data.farmerId;
+    this.formValueCrop.controls['farmerId'].setValue(data.farmerId);
+    this.formValueCrop.controls['cropId'].setValue(data.cropId);
+    this.formValueCrop.controls['cropName'].setValue(data.cropName);
+    this.formValueCrop.controls['cropQty'].setValue(data.cropQty);
+    this.formValueCrop.controls['cropType'].setValue(data.cropType);
+    this.formValueCrop.controls['cropPrice'].setValue(data.cropPrice);
+    
+  }
+
+  updateCrop(){
+    this.cropObj.farmerId=this.formValueCrop.value.farmerId;
+    this.cropObj.cropId=this.formValueCrop.value.cropId;
+    this.cropObj.cropName=this.formValueCrop.value.cropName;
+    this.cropObj.cropQty=this.formValueCrop.value.cropQty;
+    this.cropObj.cropType=this.formValueCrop.value.cropType;
+    this.cropObj.cropPrice=this.formValueCrop.value.cropPrice;
+    this.adminService.updateCrop(this.cropObj).subscribe(res=>{
+      console.log("updated crop succesfully")
+      
+    });
+    this.ngOnInit();
+  }
+
+  deleteCrop(cropId:string){
+    this.adminService.DeleteCrop(cropId).subscribe(res=>{this.result=res});
+    console.log("deleted crop");
+    this.ngOnInit();
     
   }
 }

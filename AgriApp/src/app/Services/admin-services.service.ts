@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { cropModel } from './cropModel';
-import { userModel } from './userModel';
+import { cropModel } from '../models/cropModel';
+
+import { userModel } from '../models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,9 @@ import { userModel } from './userModel';
 export class AdminServicesService {
 
   constructor(private http:HttpClient) { }
+
+  currentUser:userModel=new userModel("","","","","","","");
+  
 
   public getALLFarmers(){
     //console.log("in get all farmers service");
@@ -45,4 +49,26 @@ public getALLCrops(){
  
   
 }
+public authenticateUser(currentUser:userModel){
+  return this.http.get<userModel>("http://localhost:8088/Authenticate/"+currentUser.userName)
+}
+
+
+// Crop services-----------------------------------------
+public Addcrop(crop:cropModel){
+  return this.http.post<cropModel>("http://localhost:8084/crop/addCrop/"+crop.farmerId,crop);
+}
+public updateCrop(crop:cropModel){
+  return this.http.put<cropModel>("http://localhost:8084/crop/update/"+crop.cropId,crop);
+}
+public DeleteCrop(cropId:string){
+  return this.http.delete("http://localhost:8084/crop/delete/"+cropId);
+  
+}
+
+
+
+ public setCurrentUser(res:any){
+   this.currentUser=res;
+ }
 }

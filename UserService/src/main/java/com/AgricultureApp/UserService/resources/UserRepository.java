@@ -16,4 +16,9 @@ public interface UserRepository extends  MongoRepository<UserModel,String> {
 	@Query("{'userEmail':?0}")
 	UserModel getByuserEmail(String userEmail);
 
+	@Query("{'userName':?0,'userPassword':?1}")
+	UserModel authenticate(String userName, String password);
+	
+	UserModel findByuserName(String userName);
+
 }
