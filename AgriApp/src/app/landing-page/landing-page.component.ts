@@ -32,6 +32,8 @@ export class LandingPageComponent implements OnInit {
         password:[""],
       }
     )
+      sessionStorage.removeItem('loggedUser');
+
   }
 
   changeParentUser(){
@@ -48,7 +50,7 @@ export class LandingPageComponent implements OnInit {
 
     this.service.authenticateUser(this.currentUser).subscribe(res=>{
       this.loginUser = res;
-      this.validateUser(this.loginUser);
+      this.validateUser(res);
   }
     );
     //console.log(this.service.currentUser);
@@ -57,17 +59,29 @@ export class LandingPageComponent implements OnInit {
     //this.loginForm.reset();
   }
 
-  validateUser(user:userModel){
+
+  validateUser(user:any){
     console.log("in validate user function "+user)
     if(user.password==this.loginForm.value.password){
       
+      sessionStorage.setItem('loggedUser', JSON.stringify(user));
       if(user.userType=="Dealer"){
+        
+
+        // sessionStorage.setItem("loggedUser",user.userName);
         
         // this.service.currentUser=user;
         console.log("currentUser updated : "+user.location);
         
         this.router.navigate(['/dealer'])
         
+      }
+      else if(user.userType=="Admin"){
+        this.router.navigate(['/admin'])
+      }
+
+      else if(user.userType=="Farmer"){
+        this.router.navigate(['/admin'])
       }
     }
 

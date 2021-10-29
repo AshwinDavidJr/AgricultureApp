@@ -15,9 +15,13 @@ currentUser:userModel=new userModel("","","","","","","");
   faCoffee = faCoffee;
   constructor(private adminService:AdminServicesService) { }
   CropList:cropModel[]=[];
+  loggeduser:userModel=new userModel("","","","","","","");
 
   ngOnInit(): void {
     
+this.loggeduser=JSON.parse(sessionStorage.loggedUser);
+console.log(this.loggeduser);
+
     this.currentUser = this.adminService.currentUser;
     // console.log(this.adminService.currentUser);
     
