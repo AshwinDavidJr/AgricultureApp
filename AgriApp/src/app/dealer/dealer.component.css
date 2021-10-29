@@ -44,6 +44,16 @@
 -------------------------------------------------- */
 
 /* Center align the text within the three columns below the carousel */
+.scrollablediv{
+max-height: 600px;
+overflow-y: scroll;
+}
+.marketing{
+  overflow:hidden
+}
+.subscribedCrops{
+  min-height:600px ;
+}
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;

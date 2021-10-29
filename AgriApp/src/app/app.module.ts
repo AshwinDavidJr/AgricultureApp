@@ -27,6 +27,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DealerComponent } from './dealer/dealer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -61,6 +62,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatPaginatorModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule,
+
     
   ],
   providers: [AdminServicesService],

@@ -10,6 +10,8 @@ import { AdminServicesService } from '../Services/admin-services.service';
 })
 export class DealerComponent implements OnInit {
 
+  searchedKeyword!: string;
+
 currentUser:userModel=new userModel("","","","","","","");
   
   faCoffee = faCoffee;
