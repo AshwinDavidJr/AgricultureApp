@@ -5,6 +5,12 @@
 -------------------------------------------------- */
 
 /* Carousel base class */
+
+.row{
+  padding-top: 3rem !important;
+  /* position: absolute; */
+  overflow:auto !important;
+}
 .carousel {
     margin-bottom: 4rem;
   }

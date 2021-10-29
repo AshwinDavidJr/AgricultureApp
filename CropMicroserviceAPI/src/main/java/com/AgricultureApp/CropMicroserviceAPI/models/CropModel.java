@@ -16,10 +16,25 @@ public class CropModel {
 	private String cropLocation;
 	private double cropQty;
 	private String cropType;
+	private String cropImgUrl;
+	private String cropDesc;
 	
+	
+	public String getCropImgUrl() {
+		return cropImgUrl;
+	}
+	public void setCropImgUrl(String cropImgUrl) {
+		this.cropImgUrl = cropImgUrl;
+	}
+	public String getCropDesc() {
+		return cropDesc;
+	}
+	public void setCropDesc(String cropDesc) {
+		this.cropDesc = cropDesc;
+	}
 	
 	public CropModel(String farmerId, String cropId, String cropName, String cropLocation, double cropQty,
-			String cropType) {
+			String cropType, String cropImgUrl, String cropDesc) {
 		super();
 		this.farmerId = farmerId;
 		this.cropId = cropId;
@@ -27,6 +42,8 @@ public class CropModel {
 		this.cropLocation = cropLocation;
 		this.cropQty = cropQty;
 		this.cropType = cropType;
+		this.cropImgUrl = cropImgUrl;
+		this.cropDesc = cropDesc;
 	}
 	public CropModel() {
 		// TODO Auto-generated constructor stub

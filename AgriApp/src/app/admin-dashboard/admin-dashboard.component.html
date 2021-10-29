@@ -84,6 +84,14 @@
                   <input type="email" formControlName="cropPrice" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
                 </div>
                 
+                <div class="form-group">
+                  <label for="exampleInputEmail1">cropDesc</label>
+                  <input type="email" formControlName="cropDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">cropImgUrl</label>
+                  <input type="email" formControlName="cropImgUrl" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cropPrice">
+                </div>
               <button type="submit" class="btn btn-primary" (click)="addCrop()">Add</button>
               <button type="submit" class="btn btn-primary" (click)="updateCrop()" data-dismiss="modal">Update</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -242,9 +250,23 @@
                 <th mat-header-cell *matHeaderCellDef> cropType </th>
                 <td mat-cell *matCellDef="let element"> {{element.cropType}} </td>
               </ng-container>
+
+              <!-- cropPrice Column -->
               <ng-container matColumnDef="cropPrice">
                 <th mat-header-cell *matHeaderCellDef> cropPrice </th>
                 <td mat-cell *matCellDef="let element"> {{element.cropPrice}} </td>
+              </ng-container>
+
+              <!-- cropDesc Column -->
+              <ng-container matColumnDef="cropDesc">
+                <th mat-header-cell *matHeaderCellDef [hidden]=true> cropDesc </th>
+                <td mat-cell *matCellDef="let element" [hidden]=true> {{element.cropDesc}} </td>
+              </ng-container>
+
+              <!-- cropImgUrl Column -->
+              <ng-container matColumnDef="cropImgUrl">
+                <th mat-header-cell *matHeaderCellDef [hidden]=true> cropImgUrl </th>
+                <td mat-cell *matCellDef="let element" [hidden]=true> {{element.cropImgUrl}} </td>
               </ng-container>
 
               <!-- Actions Column -->

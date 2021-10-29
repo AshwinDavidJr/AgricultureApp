@@ -6,7 +6,10 @@ export class cropModel{
         public cropName:String,
         public cropQty:Number
         ,public cropType:String
-        ,public cropPrice:String
+        ,public cropPrice:String,
+        public cropImgUrl:String,
+        public cropDesc:String,
+        
     )
         {
         this.farmerId=farmerId;

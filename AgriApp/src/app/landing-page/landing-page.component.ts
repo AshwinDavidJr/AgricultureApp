@@ -39,7 +39,7 @@ export class LandingPageComponent implements OnInit {
   }
   Authenticate(){
 
-    console.log("in authentication funstion");
+    console.log("in authentication function");
     
     //console.log(this.loginForm.value.userName);
     
@@ -63,12 +63,10 @@ export class LandingPageComponent implements OnInit {
       
       if(user.userType=="Dealer"){
         
-        this.service.currentUser=user;
-        console.log("currentUser updated : "+this.service.currentUser);
+        // this.service.currentUser=user;
+        console.log("currentUser updated : "+user.location);
         
-        this.router.navigate(['/dealer']).then(()=>{
-          window.location.reload();
-        });
+        this.router.navigate(['/dealer'])
         
       }
     }

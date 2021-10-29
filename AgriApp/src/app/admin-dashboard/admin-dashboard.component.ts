@@ -23,12 +23,12 @@ export class AdminDashboardComponent implements OnInit{
   //dtElement: DataTableDirective;
 
 
-  displayedColumns: string[] = ['farmerId', 'cropId', 'cropName', 'cropQty','cropType','Actions'];
+  displayedColumns: string[] = ['farmerId', 'cropId', 'cropName', 'cropQty','cropType','cropDesc','cropImgUrl','Actions'];
   dataSource:any;
 
   formValue!:FormGroup;
   formValueCrop!:FormGroup;
-  cropObj : cropModel = new cropModel("","","",0,"","");
+  cropObj : cropModel = new cropModel("","","",0,"","","","");
 
   FarmerList:userModel[]=[];
   DealerList:userModel[]=[];
@@ -82,6 +82,8 @@ export class AdminDashboardComponent implements OnInit{
         cropQty:[""],
         cropType:[""],
         cropPrice:[""],
+        cropDesc:[""],
+        cropImgUrl:[""]
       }
     )
     
@@ -160,6 +162,8 @@ export class AdminDashboardComponent implements OnInit{
     this.cropObj.cropQty=this.formValueCrop.value.cropQty;
     this.cropObj.farmerId=this.formValueCrop.value.farmerId;
     this.cropObj.cropType=this.formValueCrop.value.cropType;
+    this.cropObj.cropDesc=this.formValueCrop.value.cropDesc;
+    this.cropObj.cropImgUrl=this.formValueCrop.value.cropImgUrl;
     if(this.cropObj!=null){
       this.adminService.Addcrop(this.cropObj).subscribe(res=>{this.CropList.push(res)});
     }
@@ -178,6 +182,8 @@ export class AdminDashboardComponent implements OnInit{
     this.formValueCrop.controls['cropQty'].setValue(data.cropQty);
     this.formValueCrop.controls['cropType'].setValue(data.cropType);
     this.formValueCrop.controls['cropPrice'].setValue(data.cropPrice);
+    this.formValueCrop.controls['cropDesc'].setValue(data.cropDesc);
+    this.formValueCrop.controls['cropImgUrl'].setValue(data.cropImgUrl);
     
   }
 
@@ -188,6 +194,9 @@ export class AdminDashboardComponent implements OnInit{
     this.cropObj.cropQty=this.formValueCrop.value.cropQty;
     this.cropObj.cropType=this.formValueCrop.value.cropType;
     this.cropObj.cropPrice=this.formValueCrop.value.cropPrice;
+    this.cropObj.cropDesc=this.formValueCrop.value.cropDesc;
+    this.cropObj.cropImgUrl=this.formValueCrop.value.cropImgUrl;
+
     this.adminService.updateCrop(this.cropObj).subscribe(res=>{
       console.log("updated crop succesfully")
       

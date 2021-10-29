@@ -19,7 +19,7 @@ currentUser:userModel=new userModel("","","","","","","");
   ngOnInit(): void {
     
     this.currentUser = this.adminService.currentUser;
-    console.log(this.adminService.currentUser);
+    // console.log(this.adminService.currentUser);
     
     this.adminService.getALLCrops().subscribe(res=>{this.CropList=res});
 
