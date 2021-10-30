@@ -116,7 +116,9 @@
 <mat-tab label="My Orders">
   <div class="subscribedCrops">
     
-
+    <div *ngFor="let order of MyOrders">
+      {{order.orderID}}
+    </div>
 
   </div>
 </mat-tab>
@@ -157,7 +159,7 @@
           <h5>Location: {{currentFarmer.location}}</h5>
           <h5>Farmer Name: {{currentFarmer.userName}}</h5>
           <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
-          <p ><button class="btn btn-success"  data-toggle="modal" data-target="#cropDetailModal">Place Order &raquo;</button></p>
+          <p ><button class="btn btn-success" (click)="placeOrder(currentFarmer.userId,currentCrop.cropId)" data-toggle="modal" data-target="#cropDetailModal">Place Order &raquo;</button></p>
         </div>
       </div>
     
