@@ -71,4 +71,9 @@ public DeleteCrop(cropId:string){
  public setCurrentUser(res:any){
    this.currentUser=res;
  }
+
+ public getUserById(id:any){
+  return this.http.get<userModel>("http://localhost:8088/getById/"+id);
 }
+}
+

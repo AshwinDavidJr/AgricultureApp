@@ -23,7 +23,7 @@ export class AdminDashboardComponent implements OnInit{
   //dtElement: DataTableDirective;
 
 
-  displayedColumns: string[] = ['farmerId', 'cropId', 'cropName', 'cropQty','cropType','cropDesc','cropImgUrl','Actions'];
+  displayedColumns: string[] = ['farmerId', 'cropId', 'cropName', 'cropQty','cropType','cropPrice','cropDesc','cropImgUrl','Actions'];
   dataSource:any;
 
   formValue!:FormGroup;

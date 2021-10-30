@@ -1,6 +1,7 @@
 package com.AgricultureApp.UserService.resources;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -68,6 +69,13 @@ public class userController {
 		public UserModel getUsersByUserEmail(@PathVariable String userEmail) {
 			return userRepository.getByuserEmail(userEmail);
 		}
+		
+		@GetMapping("/getById/{id}")
+		public Optional<UserModel> getUsersByid(@PathVariable String id) {
+			return userRepository.findById(id);
+		}
+		
+		
 	
 
 }

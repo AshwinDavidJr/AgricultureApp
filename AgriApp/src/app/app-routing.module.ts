@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { DealerComponent } from './dealer/dealer.component';
+import { FarmerComponent } from './farmer/farmer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: '',redirectTo:'/landing',pathMatch:'full'},
   {path: 'admin/dashboard',component:AdminDashboardComponent},
   {path: 'dealer',component:DealerComponent},
+  {path: 'farmer',component:FarmerComponent}
   // {path: 'admin',redirectTo:'/landing',pathMatch:'full'},
 
 ];

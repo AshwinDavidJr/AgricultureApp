@@ -16,17 +16,33 @@
     }
   </style>
 </head>
+
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg  navbar-light " style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" >
   <a class="navbar-brand" href="#">
-      <img src="..\assets\logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      <span>Agro-App : {{loggeduser.userName}}</span>
-     
+    <img src="..\assets\logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    AgroApp  
   </a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <h4>WELCOME {{loggeduser.userName}} &nbsp; &nbsp;</h4>            </li>
+      <li class="nav-item active">
+        <a class="btn btn-link nav-link" data-toggle="modal" data-target="#ProfileModal"><i class="fas fa-user-alt"></i>  <span class="sr-only">(current)</span></a> 
+      </li> &nbsp; &nbsp;
+      <li class="nav-item active">
+        <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a>
+      </li>
+      </ul>
+    
+  </div>
 </nav>
+
 <!-- navbar ends here -->
 
 <!-- Carousel -->
@@ -90,14 +106,19 @@
   
       <h2>{{crop.cropName}}</h2>
       <p>{{crop.cropDesc}}</p>
-      <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
+      <p><button class="btn btn-secondary" (click)="getFarmer(crop)" data-toggle="modal" data-target="#cropDetailModal">View details &raquo;</button></p>
     </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
 </div>
 </mat-tab>
 
-<mat-tab label="My Crops">
-  <div class="subscribedCrops"></div>
+<mat-tab label="My Orders">
+  <div class="subscribedCrops">
+    
+
+
+  </div>
 </mat-tab>
 </mat-tab-group>
   
@@ -108,3 +129,71 @@
 
 </div>
 <!-- cards ends here -->
+
+
+<!-- Item details Modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="cropDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog justify-content-center">
+    <div class="modal-content ">
+      <div class="modal-body ">
+        <div  class="justify-content-center">
+         
+          <div class="centeredimg">
+          <img src="{{currentCrop.cropImgUrl}}" class="rounded-circle" alt="image not found" width="140" height="140"> 
+          
+        </div>
+        
+      <br>
+      <h2>{{currentCrop.cropName}}</h2>
+          
+          <p>Description: 
+            {{currentCrop.cropDesc}}</p>
+          <hr>
+          <h3>Price/kg: {{currentCrop.cropPrice}}</h3>
+          <h5>Farmer Name: {{currentFarmer.userName}}</h5>
+          <h5>Location: {{currentFarmer.location}}</h5>
+          <h5>Farmer Name: {{currentFarmer.userName}}</h5>
+          <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
+          <p ><button class="btn btn-success"  data-toggle="modal" data-target="#cropDetailModal">Place Order &raquo;</button></p>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="upper"> <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid"> </div>
+          <div class="user text-center">
+              <div class="profile"> <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="rounded-circle" width="80"> </div>
+          </div>
+          <div class="mt-5 text-center">
+              <h4 class="mb-0">{{loggeduser.userName}}</h4> <span class="text-muted d-block mb-2">{{loggeduser.location}}</span> 
+              <button class="btn btn-primary btn-sm follow">edit profile</button>
+              <hr>
+              <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+                  <div class="stats">
+                      <h6 class="mb-0">Email</h6> <span><h4>{{loggeduser.userEmail}}</h4></span>
+                  </div>
+                  <div class="stats">
+                      <h6 class="mb-0">Mobile</h6> <span><h4>{{loggeduser.mobileNo}}</h4></span>
+                  </div>
+                  <div class="stats">
+                      <h6 class="mb-0">Account No</h6> <span><h4>{{loggeduser.accountNo}}</h4></span>
+                  </div>
+              </div>
+              <hr>
+          </div>
+      </div>
+      </div>
+    
+    </div>
+  </div>
+</div>

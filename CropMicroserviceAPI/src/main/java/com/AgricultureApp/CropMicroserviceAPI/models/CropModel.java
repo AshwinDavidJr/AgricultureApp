@@ -18,8 +18,29 @@ public class CropModel {
 	private String cropType;
 	private String cropImgUrl;
 	private String cropDesc;
+	private String cropPrice;
 	
 	
+	
+	public CropModel(String farmerId, String cropId, String cropName, String cropLocation, double cropQty,
+			String cropType, String cropImgUrl, String cropDesc, String cropPrice) {
+		super();
+		this.farmerId = farmerId;
+		this.cropId = cropId;
+		this.cropName = cropName;
+		this.cropLocation = cropLocation;
+		this.cropQty = cropQty;
+		this.cropType = cropType;
+		this.cropImgUrl = cropImgUrl;
+		this.cropDesc = cropDesc;
+		this.cropPrice = cropPrice;
+	}
+	public String getCropPrice() {
+		return cropPrice;
+	}
+	public void setCropPrice(String cropPrice) {
+		this.cropPrice = cropPrice;
+	}
 	public String getCropImgUrl() {
 		return cropImgUrl;
 	}
@@ -33,18 +54,7 @@ public class CropModel {
 		this.cropDesc = cropDesc;
 	}
 	
-	public CropModel(String farmerId, String cropId, String cropName, String cropLocation, double cropQty,
-			String cropType, String cropImgUrl, String cropDesc) {
-		super();
-		this.farmerId = farmerId;
-		this.cropId = cropId;
-		this.cropName = cropName;
-		this.cropLocation = cropLocation;
-		this.cropQty = cropQty;
-		this.cropType = cropType;
-		this.cropImgUrl = cropImgUrl;
-		this.cropDesc = cropDesc;
-	}
+	
 	public CropModel() {
 		// TODO Auto-generated constructor stub
 	}

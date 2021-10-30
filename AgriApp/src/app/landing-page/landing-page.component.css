@@ -26,6 +26,7 @@ html {
 .layout_padding {
     padding-top: 90px;
     padding-bottom: 90px;
+    margin-top: 90px;
 }
 
 
@@ -123,6 +124,7 @@ html {
 
 .slider_section .detail-box {
     color: #ffffff;
+    justify-content: center;
 }
 
 .slider_section .detail-box h1 {

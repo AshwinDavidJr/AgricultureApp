@@ -28,6 +28,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DealerComponent } from './dealer/dealer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HeaderComponent } from './header/header.component';
+import { FarmerComponent } from './farmer/farmer.component';
 
 
 
@@ -39,6 +41,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NavigationBarComponent,
     AdminDashboardComponent,
     DealerComponent,
+    HeaderComponent,
+    FarmerComponent,
   ],
   imports: [
     BrowserModule,
