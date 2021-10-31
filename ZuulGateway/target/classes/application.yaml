@@ -13,7 +13,11 @@ zuul:
          serviceId: FARMER-APP
       ADMINMICROSERVICE:
          serviceId: ADMINMICROSERVICE
-#      login-service:
-#         url: http://localhost:9004
       CROPMICROSERVICE:
          serviceId: CROPMICROSERVICE
+      ORDERMICROSERVICE:
+         serviceId: ORDERMICROSERVICE
+      PAYMENTMICROSERVICE:
+         serviceId: PAYMENTMICROSERVICE
+      USERMICROSERVICE:
+         serviceId: USERMICROSERVICE

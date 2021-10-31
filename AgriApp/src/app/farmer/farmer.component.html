@@ -1,36 +1,217 @@
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" >
-    <a class="navbar-brand" href="#">
-      <img src="..\assets\logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      AgroApp  
-    </a>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <h4>WELCOME {{loggeduser.userName}} &nbsp; &nbsp;</h4>            </li>
-        <li class="nav-item active">
-          <a class="btn btn-link nav-link" data-toggle="modal" data-target="#ProfileModal"><i class="fas fa-user-alt"></i>  <span class="sr-only">(current)</span></a> 
-        </li> &nbsp; &nbsp;
-        <li class="nav-item active">
-          <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a>
-        </li>
-        </ul>
-      
-    </div>
-  </nav>
-  <!-- navbar ends here -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="#">
+    <img src="..\assets\logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    AgroApp
+  </a>
 
-  <!-- body -->
-  <mat-tab-group class="scroll">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+      <h4>Welcome <b>{{loggeduser.userName}}</b> &nbsp; &nbsp;</h4>
+      <li class="nav-item active">
+        <a class="btn btn-link nav-link" data-toggle="modal" data-target="#ProfileModal"><i class="fas fa-user-alt"></i>
+          <span class="sr-only">(current)</span></a>
+      </li> &nbsp; &nbsp;
+      <li class="nav-item active">
+        <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+<!-- navbar ends here -->
+<marquee behavior="alternate" direction="left"
+  style="color: rgb(36, 16, 221); background-color: #88E4D3; font-weight: bolder; font-size: small;"> Make sure you
+  follow Covid Protocols while making contact with Dealers.</marquee>
+
+<!-- body -->
+<div class="container marketing" #Cards>
+  <mat-tab-group mat-align-tabs="center" class="scroll">
     <mat-tab label="My Crops">
-      something
-      </mat-tab>
-      <mat-tab label="Orders">
-        something
-        </mat-tab>
-        </mat-tab-group>
+      <div class="heading d-flex justify-content-between">
+
+        <input type="text" class="searchBar" placeholder="Search here" [(ngModel)]="searchedKeyword">
+
+
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addCropModal" (click)="fillFarmerId()"> Add
+          Crop</button>
+      </div>
+      <hr>
+      <div class="scrollablediv">
+        <div class="row">
+          <div *ngFor="let crop of myCropList | filter:searchedKeyword"
+            class="col-lg-4 shadow p-3 mb-5 bg-white rounded">
+            <img src="{{crop.cropImgUrl}}" class="rounded-circle" alt="image not found" width="180" height="180">
+            <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+      
+      </svg> -->
+
+            <h2>{{crop.cropName}}</h2>
+            <p>{{crop.cropDesc}}</p>
+            <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
+            <p>
+              <button mat-button data-toggle="modal" data-target="#addCropModal" (click)=" editCrop(crop)">
+                <mat-icon>edit</mat-icon>
+              </button> &nbsp;
+              <button mat-button color="warn" (click)="deleteCrop(crop.cropId)">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+            </p>
+
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>
+    </mat-tab>
+    <mat-tab label="Orders">
+      <div class="scrollablediv">
+        <div *ngFor="let order of MyOrders" class="col-xl-6 col-md-12 orderCard">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-body cleartfix">
+                <div class="media align-items-stretch">
+
+                  <div class="media-body">
+                    <h3> <b>Order For: {{order.cropName}} </b> &nbsp; &nbsp;<i *ngIf="order.orderStatus=='Ordered'"
+                        class="fas fa-bell"></i> </h3>
+                    <h4>Order ID: {{order.orderID}} </h4>
+                    <span>From: {{order.dealerName}}</span> <br>
+                    <span>Contact: {{order.dealerMobile}}</span> <br>
+                    <span>Amount: {{order.orderAmount}}</span> <br>
+                    <span>OrderStatus: {{order.orderStatus}}</span> <br> <br>
+                    <div *ngIf="order.orderStatus=='Ordered'">
+                      <button class="btn btn-outline-success acceptButton"
+                        (click)="changeOrderStatus(order,'Accepted')">Accept Order</button> &nbsp;
+                      <button class="btn btn-outline-danger acceptButton"
+                        (click)="changeOrderStatus(order,'Declined')">Decline Order</button>
+
+                    </div>
+                  </div>
+                  <div class="align-self-center">
+                    <i class="fas fa-wallet"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="addCropModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Admin Operation Form</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValueCrop">
+          <div class="form-group">
+            <div class="form-group">
+              <label for="exampleInputEmail1">FarmerID</label>
+              <input type="email" formControlName="farmerId" value="Farmer" class="form-control" id="exampleInputEmail1"
+                value="Farmer" aria-describedby="emailHelp" placeholder="Enter farmerId">
+            </div>
+            <label for="exampleInputEmail1">CropId</label>
+            <input type="email" formControlName="cropId" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropId">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">cropName</label>
+            <input type="email" formControlName="cropName" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropName">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">cropQty</label>
+            <input type="email" formControlName="cropQty" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropQty">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">cropType</label>
+            <input type="email" formControlName="cropType" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropType">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">cropPrice</label>
+            <input type="email" formControlName="cropPrice" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropPrice">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">cropDesc</label>
+            <input type="email" formControlName="cropDesc" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropPrice">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">cropImgUrl</label>
+            <input type="email" formControlName="cropImgUrl" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter cropPrice">
+          </div>
+          <div class="heading d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addCrop()">Add</button>
+            <button type="submit" class="btn btn-primary" (click)="updateCrop()" data-dismiss="modal">Update</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="upper"> </div>
+          <div class="user text-center">
+            <div class="profile pt-3"> <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                class="rounded-circle" width="80"> </div>
+          </div>
+          <div class="mt-5 text-center">
+            <h4 class="mb-0">{{loggeduser.userName}}</h4> <span
+              class="text-muted d-block mb-2">{{loggeduser.location}}</span>
+            <button class="btn btn-primary btn-sm follow">edit profile</button>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+              <div class="stats">
+                <h6 class="mb-0">Email</h6> <span>
+                  <h4>{{loggeduser.userEmail}}</h4>
+                </span>
+              </div>
+              <div class="stats">
+                <h6 class="mb-0">Mobile</h6> <span>
+                  <h4>{{loggeduser.mobileNo}}</h4>
+                </span>
+              </div>
+              <div class="stats">
+                <h6 class="mb-0">Account No</h6> <span>
+                  <h4>{{loggeduser.accountNo}}</h4>
+                </span>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

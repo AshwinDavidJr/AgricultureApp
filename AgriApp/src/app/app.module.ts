@@ -33,6 +33,7 @@ import { FarmerComponent } from './farmer/farmer.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { FarmerComponent } from './farmer/farmer.component';
     DealerComponent,
     HeaderComponent,
     FarmerComponent,
+    
   ],
   imports: [
     BrowserModule,

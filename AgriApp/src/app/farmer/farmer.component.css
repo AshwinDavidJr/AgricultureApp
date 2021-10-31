@@ -1,0 +1,30 @@
+.scrollablediv{
+    max-height: 600px;
+    overflow-y: scroll;
+    }
+
+    .heading{
+        padding:1rem;
+        align-items: flex-end;
+    }
+    .row{
+        padding-top: 3rem !important;
+        /* position: absolute; */
+        overflow:auto !important;
+        }
+        .marketing .col-lg-4 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            }
+            .marketing h2 {
+            font-weight: 400;
+            }
+            /* rtl:begin:ignore */
+            .marketing .col-lg-4 p {
+            margin-right: .75rem;
+            margin-left: .75rem;
+            }
+            .orderCard{
+                padding-top: 15px !important;
+                padding-bottom: 15px !important;
+            }

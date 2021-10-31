@@ -7,18 +7,18 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
 
-  user:boolean=true;
-  userType:String = "admin";
+
+  user: boolean = true;
+  userType: String = "admin";
   ngOnInit(): void {
 
   }
   title = 'AgriApp';
-  flag:boolean=false;
+  flag: boolean = false;
 
 
-  changeUser(){
-    this.user=false;
+  changeUser() {
+    this.user = false;
   }
 }

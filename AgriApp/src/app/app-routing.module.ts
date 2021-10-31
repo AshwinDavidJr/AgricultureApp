@@ -6,6 +6,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { FarmerComponent } from './farmer/farmer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+
 const routes: Routes = [
 
   {path: 'landing',component: LandingPageComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: '',redirectTo:'/landing',pathMatch:'full'},
   {path: 'admin/dashboard',component:AdminDashboardComponent},
   {path: 'dealer',component:DealerComponent},
-  {path: 'farmer',component:FarmerComponent}
+  {path: 'farmer',component:FarmerComponent},
+  
   // {path: 'admin',redirectTo:'/landing',pathMatch:'full'},
 
 ];

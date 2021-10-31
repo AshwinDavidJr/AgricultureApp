@@ -10,25 +10,103 @@ public class Orders {
 	private String dealerID;
 	private String farmerID;
 	private String cropID;
+	private String dealerName;
+	private String farmerName;
+	private String cropName;
+	
+	private String dealerMobile;
+	private String farmerMobile;
+	private String orderStatus;
+	private String orderAmount;
+
 	
 	
-	
-	public Orders() {
-		super();
-	}
-	public Orders(String orderID, String dealerID, String farmerID, String cropID) {
+	public Orders(String orderID, String dealerID, String farmerID, String cropID, String dealerName, String farmerName,
+			String cropName, String dealerMobile, String farmerMobile, String orderStatus, String orderAmount) {
 		super();
 		this.orderID = orderID;
 		this.dealerID = dealerID;
 		this.farmerID = farmerID;
 		this.cropID = cropID;
+		this.dealerName = dealerName;
+		this.farmerName = farmerName;
+		this.cropName = cropName;
+		this.dealerMobile = dealerMobile;
+		this.farmerMobile = farmerMobile;
+		this.orderStatus = orderStatus;
+		this.orderAmount = orderAmount;
 	}
+
+	public String getOrderAmount() {
+		return orderAmount;
+	}
+
+	public void setOrderAmount(String orderAmount) {
+		this.orderAmount = orderAmount;
+	}
+
+	public String getCropName() {
+		return cropName;
+	}
+
+	public void setCropName(String cropName) {
+		this.cropName = cropName;
+	}
+	
+	
+
+	
+
+	public Orders() {
+		super();
+	}
+
 	public String getOrderID() {
 		return orderID;
 	}
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+	public String getDealerName() {
+		return dealerName;
+	}
+
+	public void setDealerName(String dealerName) {
+		this.dealerName = dealerName;
+	}
+
+	public String getFarmerName() {
+		return farmerName;
+	}
+
+	public void setFarmerName(String farmerName) {
+		this.farmerName = farmerName;
+	}
+
+	public String getDealerMobile() {
+		return dealerMobile;
+	}
+
+	public void setDealerMobile(String dealerMobile) {
+		this.dealerMobile = dealerMobile;
+	}
+
+	public String getFarmerMobile() {
+		return farmerMobile;
+	}
+
+	public void setFarmerMobile(String farmerMobile) {
+		this.farmerMobile = farmerMobile;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
 	public String getDealerID() {
 		return dealerID;
 	}

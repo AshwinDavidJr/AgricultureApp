@@ -17,31 +17,40 @@
   </style>
 </head>
 
+<!-- <div *ngIf="loggeduser!=null; then dealer; else redirect()">
+  <ng-template #dealer> -->
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" >
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="#">
     <img src="..\assets\logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    AgroApp  
+    AgroApp
   </a>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <h4>WELCOME {{loggeduser.userName}} &nbsp; &nbsp;</h4>            </li>
+        <h4>WELCOME {{loggeduser.userName}} &nbsp; &nbsp;</h4>
+      </li>
       <li class="nav-item active">
-        <a class="btn btn-link nav-link" data-toggle="modal" data-target="#ProfileModal"><i class="fas fa-user-alt"></i>  <span class="sr-only">(current)</span></a> 
+        <a class="btn btn-link nav-link" data-toggle="modal" data-target="#ProfileModal"><i class="fas fa-user-alt"></i>
+          <span class="sr-only">(current)</span></a>
       </li> &nbsp; &nbsp;
       <li class="nav-item active">
         <a class="nav-link btn btn-outline-danger" href="">Signout <span class="sr-only">(current)</span></a>
       </li>
-      </ul>
-    
+    </ul>
+
   </div>
 </nav>
+<marquee behavior="alternate" direction="left"
+  style="color: rgb(36, 16, 221); background-color: #88E4D3; font-weight: bolder; font-size: small;">Due to covid the
+  orders may take take more time than usual. Please bare with us. Make sure you follow Covid Protocols while making
+  contact with farmers.</marquee>
 
 <!-- navbar ends here -->
 
@@ -54,25 +63,35 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="c-img d-block w-100 h-100" src="https://images.pexels.com/photos/147357/pexels-photo-147357.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="First slide">
+      <img class="c-img d-block w-100 h-100"
+        src="https://images.pexels.com/photos/147357/pexels-photo-147357.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        alt="First slide">
       <div class="carousel-caption d-none d-md-block">
-        <h2>WE DELIVER</h2>
-        <button type="button" class="btn btn-light" (click)="scroll(Cards)">Find Crops Now</button>
+        <h1><b>WE DELIVER</b></h1>
         <p>We deliver the best products in the country. Believe in us. Its all good .</p>
+        <button type="button" class="btn btn-light" (click)="scroll(Cards)">Find Crops Now</button>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://images.pexels.com/photos/196643/pexels-photo-196643.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Second slide">
+      <img class="d-block w-100"
+        src="https://images.pexels.com/photos/196643/pexels-photo-196643.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
-        <h5>...</h5>
-        <p>...</p>
+        <h1><b>Find The Crop and make an Order</b></h1>
+        <p>Feel free to browse through the variety of products in the all crop section. All the products are verified
+          and we make sure all your orders are fulfilled.</p>
+        <button type="button" class="btn btn-light" (click)="scroll(Cards)">Find Crops Now</button>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://images.pexels.com/photos/820905/pexels-photo-820905.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Third slide">
+      <img class="d-block w-100"
+        src="https://images.pexels.com/photos/820905/pexels-photo-820905.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
-        <h5>...</h5>
-        <p>...</p>
+        <h1><b> Contact your Farmer and make a Meeting and make Payment</b> </h1>
+        <p>Contact your farmer via provided mobile number and schedule a meeting to verify the crops and negotiate the
+          price. also make sure you follow covid protocols while travelling and meeting your farmer</p>
+        <button type="button" class="btn btn-light" (click)="scroll(Cards)">Find Crops Now</button>
       </div>
     </div>
   </div>
@@ -86,44 +105,118 @@
   </a>
 </div>
 <!-- carousel ends here -->
-  
-  
+
+
 
 
 <!-- cards  -->
 <div class="container marketing" #Cards>
-  
-  <mat-tab-group class="scroll">
+
+  <mat-tab-group mat-align-tabs="center" class="scroll">
     <mat-tab label="All Crops">
-      <input type="text" class="form-control"  placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword">
+      <input type="text" class="searchBar" placeholder="Enter Keyword to search" [(ngModel)]="searchedKeyword">
       <div class="scrollablediv">
-  <div class="row">
-    <div *ngFor="let crop of CropList | filter:searchedKeyword" class="col-lg-4">
-      <img src="{{crop.cropImgUrl}}" class="rounded-circle" alt="image not found" width="180" height="180"> 
-      <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <div class="row">
+          <div *ngFor="let crop of CropList | filter:searchedKeyword" class="col-lg-4">
+            <img src="{{crop.cropImgUrl}}" class="rounded-circle" alt="image not found" width="180" height="180">
+            <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
       
       </svg> -->
-  
-      <h2>{{crop.cropName}}</h2>
-      <p>{{crop.cropDesc}}</p>
-      <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
-      <p><button class="btn btn-secondary" (click)="getFarmer(crop)" data-toggle="modal" data-target="#cropDetailModal">View details &raquo;</button></p>
-    </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
-</div>
-</mat-tab>
 
-<mat-tab label="My Orders">
-  <div class="subscribedCrops">
-    
-    <div *ngFor="let order of MyOrders">
-      {{order.orderID}}
-    </div>
+            <h2>{{crop.cropName}}</h2>
+            <p>{{crop.cropDesc}}</p>
+            <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
+            <p><button class="btn btn-secondary" (click)="getFarmer(crop)" data-toggle="modal"
+                data-target="#cropDetailModal">View details &raquo;</button></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>
+    </mat-tab>
 
-  </div>
-</mat-tab>
-</mat-tab-group>
-  
+    <mat-tab label="My Orders">
+      <div class="subscribedCrops">
+
+        <div>
+          <div class="scrollablediv" style="justify-content: center;">
+            <div *ngFor="let order of MyOrders" class="col-xl-6 col-md-12 ">
+              <div class=" orderCard " *ngIf="order.orderStatus!='Completed'">
+                <div class="card-content">
+                  <div class="card-body cleartfix">
+                    <div class="media align-items-stretch">
+                      <hr>
+                      <div class="media-body">
+                        <hr>
+                        <h3> <b>Order For: {{order.cropName}} </b> &nbsp; &nbsp; </h3>
+
+                        <h4>Order ID: {{order.orderID}} </h4>
+                        <span>To: {{order.farmerName}}</span> <br>
+                        <span>Contact: {{order.farmerMobile}}</span> <br>
+                        <span>OrderStatus: {{order.orderStatus}}</span> <br>
+                        <span>OrderAmount: {{order.orderAmount}}</span>
+
+                        <div class="payButton" *ngIf="order.orderStatus=='Accepted'">
+                          <button class="btn btn-outline-success" (click)="payNow(order)" data-toggle="modal"
+                            data-target="#paymentModal">Pay now</button> <br>
+                        </div>
+                      </div>
+                      <br>
+                      <hr>
+                      <div class="align-self-center">
+                        <i class="fas fa-wallet"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-tab>
+
+
+
+    <mat-tab label="Completed Orders">
+      <div class="subscribedCrops">
+
+        <div>
+          <div class="scrollablediv">
+            <div *ngFor="let order of MyOrders" class="col-xl-6 col-md-12 ">
+              <div class=" orderCard " *ngIf="order.orderStatus=='Completed'">
+                <div class="card-content">
+                  <div class="card-body cleartfix">
+                    <div class="media align-items-stretch">
+                      <hr>
+                      <div class="media-body">
+                        <hr>
+                        <h3> <b>Order For: {{order.cropName}} </b> &nbsp; &nbsp; </h3>
+
+                        <h4>Order ID: {{order.orderID}} </h4>
+                        <span>To: {{order.farmerName}}</span> <br>
+                        <span>Contact: {{order.farmerMobile}}</span> <br>
+                        <span>Amount: {{order.orderAmount}}</span> <br>
+                        <span>OrderStatus: {{order.orderStatus}}</span>
+
+
+                      </div>
+                      <br>
+                      <hr>
+                      <div class="align-self-center">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
 
 
 
@@ -141,28 +234,29 @@
   <div class="modal-dialog justify-content-center">
     <div class="modal-content ">
       <div class="modal-body ">
-        <div  class="justify-content-center">
-         
+        <div class="justify-content-center">
+
           <div class="centeredimg">
-          <img src="{{currentCrop.cropImgUrl}}" class="rounded-circle" alt="image not found" width="140" height="140"> 
-          
-        </div>
-        
-      <br>
-      <h2>{{currentCrop.cropName}}</h2>
-          
-          <p>Description: 
+            <img src="{{currentCrop.cropImgUrl}}" class="rounded-circle" alt="image not found" width="140" height="140">
+
+          </div>
+
+          <br>
+          <h2>{{currentCrop.cropName}}</h2>
+
+          <p>Description:
             {{currentCrop.cropDesc}}</p>
           <hr>
-          <h3>Price/kg: {{currentCrop.cropPrice}}</h3>
+          <h3>Price/kg: Rs {{currentCrop.cropPrice}}</h3>
           <h5>Farmer Name: {{currentFarmer.userName}}</h5>
           <h5>Location: {{currentFarmer.location}}</h5>
-          <h5>Farmer Name: {{currentFarmer.userName}}</h5>
+          <h5>Farmer Email: {{currentFarmer.userEmail}}</h5>
           <!-- <p *ngIf="getFarmer(crop.farmerId)!=null">Location: {{currentFarmer.location}}</p> -->
-          <p ><button class="btn btn-success" (click)="placeOrder(currentFarmer.userId,currentCrop.cropId)" data-toggle="modal" data-target="#cropDetailModal">Place Order &raquo;</button></p>
+          <p><button class="btn btn-success"
+              (click)="placeOrder(currentFarmer.userId,currentCrop.cropId,currentFarmer.userName,currentFarmer.mobileNo,currentCrop.cropName,currentCrop.cropPrice)"
+              data-toggle="modal" data-target="#cropDetailModal">Place Order &raquo;</button></p>
         </div>
       </div>
-    
     </div>
   </div>
 </div>
@@ -174,28 +268,78 @@
         <div class="card">
           <div class="upper"> <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid"> </div>
           <div class="user text-center">
-              <div class="profile"> <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="rounded-circle" width="80"> </div>
+            <div class="profile"> <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                class="rounded-circle" width="80"> </div>
           </div>
           <div class="mt-5 text-center">
-              <h4 class="mb-0">{{loggeduser.userName}}</h4> <span class="text-muted d-block mb-2">{{loggeduser.location}}</span> 
-              <button class="btn btn-primary btn-sm follow">edit profile</button>
-              <hr>
-              <div class="d-flex justify-content-between align-items-center mt-4 px-4">
-                  <div class="stats">
-                      <h6 class="mb-0">Email</h6> <span><h4>{{loggeduser.userEmail}}</h4></span>
-                  </div>
-                  <div class="stats">
-                      <h6 class="mb-0">Mobile</h6> <span><h4>{{loggeduser.mobileNo}}</h4></span>
-                  </div>
-                  <div class="stats">
-                      <h6 class="mb-0">Account No</h6> <span><h4>{{loggeduser.accountNo}}</h4></span>
-                  </div>
+            <h4 class="mb-0">{{loggeduser.userName}}</h4> <span
+              class="text-muted d-block mb-2">{{loggeduser.location}}</span>
+            <button class="btn btn-primary btn-sm follow">edit profile</button>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+              <div class="stats">
+                <h6 class="mb-0">Email</h6> <span>
+                  <h4>{{loggeduser.userEmail}}</h4>
+                </span>
               </div>
-              <hr>
+              <div class="stats">
+                <h6 class="mb-0">Mobile</h6> <span>
+                  <h4>{{loggeduser.mobileNo}}</h4>
+                </span>
+              </div>
+              <div class="stats">
+                <h6 class="mb-0">Account No</h6> <span>
+                  <h4>{{loggeduser.accountNo}}</h4>
+                </span>
+              </div>
+            </div>
+            <hr>
           </div>
+        </div>
       </div>
-      </div>
-    
+
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="payForm">
+          <div class="products">
+            <h3 class="title text-center"> <b> CHECKOUT</b></h3>
+            <div class="item">
+              <span class="price">Order ID : {{order.orderID}}</span>
+              <p class="item-name">Order Item : {{order.cropName}}</p>
+            </div>
+            <div class="item">
+              <span class="price">Payment To : {{order.farmerName}}</span>
+              <p class="item-name">Payment From : {{order.dealerName}}</p>
+            </div>
+          </div>
+          <div class="card-details">
+
+            <div class="row" style="padding-top: 0 !important;">
+              <div class="form-group col-sm-9">
+                <label for="cvc">Amount : {{order.orderAmount}} </label>
+                (Amount will be deducted from your linked Bank Account.)
+              </div>
+              
+              <div class="form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal"
+                  (click)="addPayment(order.orderID,order.cropName,order.farmerName,order.dealerName,order.orderAmount)">Pay</button>
+                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </ng-template>
+</div> -->

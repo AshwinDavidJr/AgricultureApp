@@ -2,7 +2,7 @@ server:
   port: 8088
 spring:
   application:
-    name: User-App
+    name: UserMicroservice
   data:
     mongodb:
       uri: mongodb+srv://AshwinDavid:19_valsalakumari_62@cluster0-training.1p0c1.mongodb.net/FarmerDB?retryWrites=true&w=majority
