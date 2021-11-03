@@ -45,7 +45,7 @@ public DeleteFarmer(userId:String){
 public getALLCrops(){
   console.log("in get crop method");
 
-  return this.http.get<cropModel[]>("http://localhost:8100/CROPMICROSERVICE/crop/getall");
+  return this.http.get<cropModel[]>("http://localhost:8100/ADMINMICROSERVICE/admin/getAllCrops");
  
   
 }
@@ -75,5 +75,7 @@ public DeleteCrop(cropId:string){
  public getUserById(id:any){
   return this.http.get<userModel>("http://localhost:8100/USERMICROSERVICE/getById/"+id);
 }
+
+
 }
 

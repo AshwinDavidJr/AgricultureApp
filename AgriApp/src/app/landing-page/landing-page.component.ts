@@ -99,6 +99,9 @@ export class LandingPageComponent implements OnInit {
       else if (user.userType == "Farmer") {
         this.router.navigate(['/farmer'])
       }
+      else
+      alert("invalid credentials")
+      
     }
   }
 
@@ -107,5 +110,6 @@ export class LandingPageComponent implements OnInit {
     el.scrollIntoView();
   }
 
+ 
 
 }

@@ -10,11 +10,11 @@ public class CropModel {
 	private String cropLocation;
 	private double cropQty;
 	private String cropType;
-	
-	public CropModel() {
-	}
+	private String cropImgUrl;
+	private String cropDesc;
+	private String cropPrice;
 	public CropModel(String farmerId, String cropId, String cropName, String cropLocation, double cropQty,
-			String cropType) {
+			String cropType, String cropImgUrl, String cropDesc, String cropPrice) {
 		super();
 		this.farmerId = farmerId;
 		this.cropId = cropId;
@@ -22,6 +22,9 @@ public class CropModel {
 		this.cropLocation = cropLocation;
 		this.cropQty = cropQty;
 		this.cropType = cropType;
+		this.cropImgUrl = cropImgUrl;
+		this.cropDesc = cropDesc;
+		this.cropPrice = cropPrice;
 	}
 	public String getFarmerId() {
 		return farmerId;
@@ -59,6 +62,29 @@ public class CropModel {
 	public void setCropType(String cropType) {
 		this.cropType = cropType;
 	}
+	public String getCropImgUrl() {
+		return cropImgUrl;
+	}
+	public void setCropImgUrl(String cropImgUrl) {
+		this.cropImgUrl = cropImgUrl;
+	}
+	public String getCropDesc() {
+		return cropDesc;
+	}
+	public void setCropDesc(String cropDesc) {
+		this.cropDesc = cropDesc;
+	}
+	public String getCropPrice() {
+		return cropPrice;
+	}
+	public void setCropPrice(String cropPrice) {
+		this.cropPrice = cropPrice;
+	}
+	public CropModel() {
+		super();
+	}
+	
+	
 	
 	
 	

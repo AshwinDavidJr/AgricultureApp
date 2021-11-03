@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import jsPDF from 'jspdf';
 import { cropModel } from '../models/cropModel';
 import { orderModel } from '../models/Orders';
 import { paymentModel } from '../models/paymentModal';
@@ -17,6 +18,8 @@ export class DealerComponent implements OnInit {
 
   constructor(private adminService: AdminServicesService, private dealerService: DealerService, private fb: FormBuilder, private router:Router) { }
 
+  @ViewChild('cards') el!:ElementRef;
+  cardId:number=0;
   payForm!: FormGroup;
   farmerList: userModel[] = [];
   searchedKeyword!: string;
@@ -33,6 +36,7 @@ export class DealerComponent implements OnInit {
 
   CropList: cropModel[] = [];
   loggeduser: userModel = new userModel("", "", "", "", "", "", "");
+  
   
 
   ngOnInit(): void {
@@ -159,4 +163,32 @@ export class DealerComponent implements OnInit {
   //   this.router.navigate([''])
   // }
 
+  getPDF(){
+     let pdf = new jsPDF('p','pt','a4');
+     pdf.html(this.el.nativeElement,{
+       callback:(pdf)=>{
+         pdf.save("reciept.pdf");
+       }
+     })
+     
+    // pdf.text("hello",10,10);
+    // pdf.save();
+    // var cardId="card"+i.toString();
+    // console.log(cardId);
+
+
+
+     
+    
+   
+    
+    
+    
+  }
+
+  getCardId(i:String){
+    
+    
+    
+  }
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.AgricultureApp.Admin_MicroserviceAPI.models.CropModel;
 import com.AgricultureApp.Admin_MicroserviceAPI.models.DealerModel;
 import com.AgricultureApp.Admin_MicroserviceAPI.models.FarmerModel;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -40,7 +42,7 @@ public class AdminController {
 
 	@GetMapping("/getAllCropsByFarmer/{farmerId}")
 	public List<CropModel> getAllCropsByFarmer(@PathVariable String farmerId) {
-		return Arrays.asList(restTemplate.getForObject("http://CropMicroservice/crop/getall"+farmerId, CropModel[].class));
+		return Arrays.asList(restTemplate.getForObject("http://CropMicroservice/crop/getall/"+farmerId, CropModel[].class));
 
 	}
 	

@@ -182,8 +182,9 @@
 
         <div>
           <div class="scrollablediv">
-            <div *ngFor="let order of MyOrders" class="col-xl-6 col-md-12 ">
-              <div class=" orderCard " *ngIf="order.orderStatus=='Completed'">
+            <div *ngFor="let order of MyOrders; let i=index" class="col-xl-6 col-md-12 ">
+              <div id="{{'card'+i}}" >
+              <div class=" orderCard " *ngIf="order.orderStatus=='Completed'" id="cards" #cards>
                 <div class="card-content">
                   <div class="card-body cleartfix">
                     <div class="media align-items-stretch">
@@ -196,8 +197,9 @@
                         <span>To: {{order.farmerName}}</span> <br>
                         <span>Contact: {{order.farmerMobile}}</span> <br>
                         <span>Amount: {{order.orderAmount}}</span> <br>
-                        <span>OrderStatus: {{order.orderStatus}}</span>
-
+                        <span>OrderStatus: {{order.orderStatus}}</span> &nbsp;&nbsp;
+                        <button class="btn btn-outline-success" (click)="getPDF()"
+                        >Print Reciept</button>
 
                       </div>
                       <br>
@@ -209,6 +211,7 @@
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>

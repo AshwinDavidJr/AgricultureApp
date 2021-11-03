@@ -36,9 +36,9 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.adminService.getALLFarmers().subscribe(res => { this.FarmerList = res });
-    this.adminService.getALLDealers().subscribe(res => { this.DealerList = res });
-    this.adminService.getALLCrops().subscribe(res => { this.CropList = res });
+    this.getEverything();
+    
+    
 
     // FormValue initializations
     this.formValue = this.fb.group(
@@ -69,6 +69,13 @@ export class AdminDashboardComponent implements OnInit {
 
   }
 
+getEverything(){
+
+  this.adminService.getALLCrops().subscribe(res => { this.CropList = res });
+  this.adminService.getALLFarmers().subscribe(res => { this.FarmerList = res });
+  this.adminService.getALLDealers().subscribe(res => { this.DealerList = res });
+}
+
 
   // function to add user
   addUser() {
@@ -92,6 +99,7 @@ export class AdminDashboardComponent implements OnInit {
       alert("wrong UserType");
 
     this.formValue.reset();
+    this.getEverything();
     this.ngOnInit();
   }
 
@@ -119,6 +127,7 @@ export class AdminDashboardComponent implements OnInit {
       console.log("updated user successfully")
     });
 
+    this.getEverything();
     this.ngOnInit();
     this.formValue.reset();
   }
@@ -128,6 +137,7 @@ export class AdminDashboardComponent implements OnInit {
   deleteFarmer(userId: String) {
     this.adminService.DeleteFarmer(userId).subscribe(res => { this.result = res });
     //  console.log("deleted User")
+    this.getEverything();
     this.ngOnInit();
   }
 
@@ -149,6 +159,7 @@ export class AdminDashboardComponent implements OnInit {
       this.adminService.Addcrop(this.cropObj).subscribe(res => { this.CropList.push(res) });
     }
 
+    this.getEverything();
     this.ngOnInit();
 
   }
@@ -191,6 +202,7 @@ export class AdminDashboardComponent implements OnInit {
   deleteCrop(cropId: string) {
     this.adminService.DeleteCrop(cropId).subscribe(res => { this.result = res });
     console.log("deleted crop");
+    this.getEverything();
     this.ngOnInit();
 
   }
